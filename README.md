@@ -1,63 +1,80 @@
 # Summer 2021 Project - *Research Website*
 
-**Research Website** is an django app that allows a summer researchers to write about their projects, write blog posts about summer experience and post publications. And More!
+**Research Website** is an django app that allows a summer researchers to write about their projects, write blog posts about their summer experience, post publications and More!
 
 ## Project Features
 
-##Home
+**Home Page**
 
-- [x] User can **compose and post a new tweet**
-  - [x] User can click a “Compose” icon in the Action Bar on the top right
-  - [x] User can then enter a new tweet and post this to twitter
-  - [x] User is taken back to home timeline with **new tweet visible** in timeline
-  - [x] Newly created tweet should be manually inserted into the timeline and not rely on a full refresh
-  - [x] User can **see a counter with total number of characters left for tweet** on compose tweet page
+- The NavBar contains
+  - Home
+  - Projects
+  - Blog
+  - Publications
+  - About Us
+  
+- Image Carousel
+  - Contains images from **Active** projects. They are displayed in a carousel format
+  - Each image has a title of the project and related Project Category
+- Project Categories:
+  - Display top 10 most recent categories
+  - Each category has:
+    -  Category Title
+    -  Brief summary about the category
+    -  Link to the list of projects related to the category
+    
+**Projects Page**
+  - Contains project categories that when clicked, they list related projects under the specific category
+  - Each **Category** has:
+    -  Title 
+    -  Short summary describing it
+  - Each Protject has:
+    - Title
+    - Description
+    - Contibutors
+    - Start_date
+    - Active/Completed
+    - Image 
+    - Other images if any: displayed at the bottom of the page
+   
+**Publications Page**
+  - This page contains a list of publications written by our researchers
+  - Each Publication contains:
+    - Title
+    - Link to the publication
+    - Publication data
+    - Author
+    - Abstract
+  
+**Blog Page**
+  - This page contains a list of blog posts from our researchers
+  - Each blog has:
+    - Title
+    - Body
+    - Author
+    - Creation date
 
-The following **optional** features are implemented:
+**About Us**
+  - This is where you get to know us:
+    - Brief description about this website 
+    - Profiles about the reseachers
+    - 
+**Images**
+  - Just a list of random images from us
+  - Each image has:
+    - Title
+    - Caption
+    - Url
 
-- [ ] User is using **"Twitter branded" colors and styles**
-- [ ] User can click links in tweets launch the web browser 
-- [ ] User can **select "reply" from detail view to respond to a tweet**
-- [ ] The "Compose" action is moved to a FloatingActionButton instead of on the AppBar
-- [ ] Compose tweet functionality is build using modal overlay
-- [ ] Use Parcelable instead of Serializable using the popular [Parceler library](http://guides.codepath.org/android/Using-Parceler).
-- [ ] User can **open the twitter app offline and see last loaded tweets**. Persisted in SQLite tweets are refreshed on every application launch. While "live data" is displayed when app can get it from Twitter API, it is also saved for use in offline mode.
-- [ ] When a user leaves the compose view without publishing and there is existing text, prompt to save or delete the draft. If saved, the draft should then be **persisted to disk** and can later be resumed from the compose view.
-- [ ] Enable your app to receive implicit intents from other apps. When a link is shared from a web browser, it should pre-fill the text and title of the web page when composing a tweet. 
 
-The following **additional** features are implemented:
-
-- [ ] List anything else that you can get done to improve the app functionality!
-
-## Video Walkthrough
-
-Here's a walkthrough of implemented user stories:
-
-<img src='https://github.com/jmwai80/TwitterReplica2/blob/master/VedioWalkThrough_Assgn4.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
-
-## Notes
-
-Describe any challenges encountered while building the app.
-
-## Open-source libraries used
-
-- [Android Async HTTP](https://github.com/codepath/CPAsyncHttpClient) - Simple asynchronous HTTP requests with JSON parsing
-- [Glide](https://github.com/bumptech/glide) - Image loading and caching library for Android
+## Technologies Used
+  - **Django**
+  - **JavaScript**
+  - **HTML**
+  - **CSS**
+  - **Git**
+  - **CPanel**
 
 ## License
 
-    Copyright [2020] [JohnMwai]
-
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-
-        http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
+    Copyright [2021] [TarimoResearchLab]
