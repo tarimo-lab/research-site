@@ -43,9 +43,17 @@ class Publication(models.Model):
 	pub_link = models.CharField(max_length=1000)
 	absract = models.TextField()
 	created_date = models.DateTimeField(auto_now_add=True,verbose_name="Creation Date")
+	
+	def __str__(self):
+		return self.title
+	
 
 class Gallery(models.Model):
 	gallery_image = models.FileField(upload_to='gallery', blank = True,null = True,verbose_name="Add Photos to Gallery")
+	
+	def __str__(self):
+		str_image = str(self.gallery_image)
+		return str_image[8:-4]
 
 class ProjectCategory(models.Model):
     title = models.CharField(
