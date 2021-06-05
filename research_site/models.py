@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.utils.translation import ugettext_lazy as _
+from django.conf import settings
 # Create your models here.
 
 class Profile(models.Model):
@@ -56,14 +57,9 @@ class Gallery(models.Model):
 		return str_image[8:-4]
 
 class ProjectCategory(models.Model):
-    title = models.CharField(
-        max_length=256,
-        verbose_name=_('Title :'),
-        unique=True,
-        blank=False,
-        null=False
-    )
-
+    title = models.CharField(max_length=300, blank=False, null=False)
+    date = models.DateTimeField(auto_now_add=True)
+    summary = models.TextField()
     class Meta:
         verbose_name = _('Project Category')
         verbose_name_plural = _('Project Categories')
@@ -71,15 +67,16 @@ class ProjectCategory(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return reverse('category_detail', args=[str(self.id)])
+
+    class Meta:
+        ordering = ('-date',)
+
 class Project(models.Model):
-    title = models.CharField(
-        max_length=256,
-        verbose_name=_('Title :'),
-        unique=True,
-        null=False,
-        blank=False
-    )
+    title = models.CharField(max_length=300, blank=False, null=False)
     collaborators = models.CharField(max_length=300, null=True)
+    created_date = models.DateTimeField(auto_now_add=True,verbose_name="Creation Date")
     slug = models.SlugField(
         max_length=256,
         verbose_name=_('Slug :'),
@@ -98,17 +95,15 @@ class Project(models.Model):
         default=True,
         help_text=_('is this post completed?')
     )
-    category = models.ManyToManyField(
-        ProjectCategory
-    )
+    category = models.ForeignKey('ProjectCategory', on_delete=models.CASCADE)
     content = models.TextField()
+
+    def get_absolute_url(self):
+        return reverse('project_detail', args=[str(self.id)])
 
     class Meta:
         verbose_name = _('Project')
         verbose_name_plural = _('Projects')
-
-    def display_category(self):
-        return ', '.join([cat.title for cat in self.category.all()])
 
     def __str__(self):
         return self.title
@@ -116,3 +111,6 @@ class Project(models.Model):
     @property
     def get_collaborators(self):
         return self.collaborators.split(',')
+
+    class Meta:
+        ordering = ('-created_date',)

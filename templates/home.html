@@ -1,0 +1,12 @@
+{% for active_project in active_projects %}
+
+<p>{{active_project.title}}</p>
+
+{% endfor %}
+
+{% for category in latest_categories %}
+
+<p>{{category.title}}</p>
+<p>{{category.summary}}</p>
+
+{% endfor %}
