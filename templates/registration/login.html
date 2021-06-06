@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Log In{% endblock %} 
+{% block content%}
+
+  <form method="post">
+    {% csrf_token %} 
+    <div class="login">
+      <div class="row">
+          <h2><i class="fas fa-user"></i> Log In</h2>
+          <div class="col-md-12">
+              <label for="email">Username</label>
+              <input type="text" class = "form-control" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username" placeholder="Enter Username">
+              <br>
+              <label for="password">Password</label>
+              <input type="password" class = "form-control" name="password" autocomplete="current-password" required="" id="id_password" placeholder="Enter Password">
+          </div>
+      </div>
+      <button class="btn btn-outline-primary btn-form" type="submit">LOGIN</button>
+  </div>
+  </form>
+
+{% endblock %}
