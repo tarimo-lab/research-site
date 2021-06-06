@@ -27,4 +27,4 @@ class AboutPage(TemplateView):
         context = {
             'profiles': Profile.objects.order_by('-pk'),
         }
-        return render(request, self.template_name, context)S
+        return render(request, self.template_name, context)
