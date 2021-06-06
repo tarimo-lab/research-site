@@ -19,6 +19,7 @@ class HomePage(TemplateView):
         }
         return render(request, self.template_name, context)
 
+""" AboutPage """
 class AboutPage(TemplateView):
     template_name = 'about.html'
 
@@ -26,4 +27,4 @@ class AboutPage(TemplateView):
         context = {
             'profiles': Profile.objects.order_by('-pk'),
         }
-        return render(request, self.template_name, context)
+        return render(request, self.template_name, context)S
