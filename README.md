@@ -57,8 +57,13 @@
 **About Us**
   - This is where you get to know us:
     - Brief description about this website 
-    - Profiles about the reseachers
+    - Profiles about the researchers
+      - resume 
+      - pictures
+      - headlines
+      - new theme
     - 
+
 **Images**
   - Just a list of random images from us
   - Each image has:
