@@ -42,7 +42,7 @@ class Publication(models.Model):
 	title = models.CharField(max_length=400)
 	author = models.CharField(max_length=400)
 	pub_link = models.CharField(max_length=1000)
-	absract = models.TextField()
+	abstract = models.TextField()
 	created_date = models.DateTimeField(auto_now_add=True,verbose_name="Creation Date")
 	
 	def __str__(self):
