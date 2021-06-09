@@ -29,7 +29,13 @@ class Post(models.Model):
 	content = models.TextField()
 	created_date = models.DateTimeField(auto_now_add=True,verbose_name="Creation Date")
 	post_image = models.FileField(upload_to='posts', blank = True,null = True,verbose_name="Add Photos to Article")
-
+	slug = models.SlugField(
+		max_length=256,
+		verbose_name=_('Slug :'),
+		unique=True,
+		null=False,
+		blank=False
+	)
 	def __str__(self):
 		return self.title
 
@@ -37,6 +43,7 @@ class Post(models.Model):
 		return reverse('Post', args=[str(self.id)])
 	class Meta:
 		ordering = ['-created_date']
+
 
 class Publication(models.Model):
 	title = models.CharField(max_length=400)

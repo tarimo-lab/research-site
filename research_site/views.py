@@ -28,3 +28,50 @@ class AboutPage(TemplateView):
             'profiles': Profile.objects.order_by('-pk'),
         }
         return render(request, self.template_name, context)
+
+class ProjectCategoryView(ListView):
+    model = ProjectCategory
+    template_name = 'categories.html'
+    context_object_name = "categories"
+
+def categoryDetail(request, pk):
+    category = get_object_or_404(ProjectCategory, pk=pk)
+    projects = Project.objects.filter(category=category).all()
+    return render(request, 'category_detail.html', {'category': category, 'projects': projects})
+
+""" Projects """
+class ProjectView(ListView):
+    model = Project
+    template_name = 'projects.html'
+    context_object_name = "projects"
+
+class ProjectDetailView(DetailView):
+    model = Project
+    template_name = "project_detail.html"
+
+
+""" Publications """
+class PublicationView(ListView):
+    model = Publication
+    template_name = 'publications.html'
+    context_object_name = "publications"
+
+class PublicationDetailView(DetailView):
+    model = Publication
+    template_name = "publication_detail.html"
+
+
+""" Blog """
+
+class BlogView(ListView):
+    model = Post
+    template_name = 'blog.html'
+    context_object_name = "blogs"
+
+class BlogSingle(generic.DetailView):
+    model = Post
+    template_name = 'blog_details.html'
+    def get_queryset(self):
+        return self.model.objects.filter(slug=self.kwargs['slug'])
+
+ 
