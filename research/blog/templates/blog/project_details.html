@@ -1,0 +1,27 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-10 col-md-11">
+        <!-- start content  -->
+        <div class="text-center">
+          <img src="{{ project.image.url }}" class="margin-30px-bottom" style="max-width:75%;" alt="..." >
+        </div>
+        <span class="text-extra-dark-gray font-size14">
+          <span class="font-weight-600">Team:</span>
+            {% for person in project.collaborators.all %}
+            <span>{{ person }}{% if not forloop.last %},{% endif %}</span>
+            {% endfor %}
+
+        <h5 class="margin-15px-top font-weight-600 font-size32 sm-font-size28 xs-font-size24 line-height-40 xs-line-height-30">{{ project.title }}</h5>
+        <div>
+          {% autoescape off %}
+            {{ project.html_content }}
+          {% endautoescape %}
+        </div>
+        <!-- end content -->
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Tarimo Research Group</title>
+  {% load static %}
+  <link href="{% static 'blog/css/plugins.css' %}" rel="stylesheet"/>
+  <link href="{% static 'blog/css/styles.css' %}" rel="stylesheet"/>
+  <link href="{% static 'blog/css/custom.css' %}" rel="stylesheet"/>
+  <link href="{% static 'blog/css/material-cards.css' %}" rel="stylesheet"/>
+  <link href="{% static 'blog/css/space.css' %}" rel="stylesheet"/>
+  <link href="{% static 'blog/css/landing.css' %}" rel="stylesheet"/>
+</head>
+<body>
+  <div class="main-wrapper">
+    <header class="classic-header">
+      <div class="navbar-default">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-md-12">
+              <div class="menu_area">
+                <nav class="navbar navbar-expand-lg navbar-light no-padding">
+
+                  <div class="navbar-header navbar-header-custom">
+                    <a href="{% url 'blog:index' %}" class="navbar-brand width-200px sm-width-180px xs-width-150px"><img id="logo" src="{% static 'blog/img/logo.png' %}" alt="logo"></a>
+                  </div>
+
+                  <div class="navbar-toggler"></div>
+
+                  <!-- start menu area -->
+                  <ul class="navbar-nav" id="nav" style="display: none;">
+                    <li><a href="{% url 'blog:index' %}">Home</a></li>
+                    <li><a href="{% url 'blog:project-list' %}">Projects</a></li>
+                    <li><a href="{% url 'blog:post-list' %}">Blog</a></li>
+                    <li><a href="{% url 'blog:about' %}">About Us</a></li>
+                  </ul>
+                  <!-- end menu area -->
+
+                  <!-- start attribute navigation -->
+                  <!-- <div class="attr-nav sm-no-margin ml-auto sm-margin-65px-right xs-margin-55px-right">
+                    <ul class="social-links no-margin text-center">
+                      <li>
+                        <a href="javascript:void(0)"><i class="fab fa-twitter"></i></a>
+                      </li>
+                      <li>
+                        <a href="javascript:void(0)"><i class="fab fa-instagram"></i></a>
+                      </li>
+                      <a href="javascript:void(0)"><i class="fab fa-linkedin-in"></i></a>
+                    </li>
+                  </ul>
+                </div> -->
+                <!-- end attribute navigation -->
+
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="container">
+      {% block content %}
+      {% endblock %}
+    </div>
+  </section>
+
+  <footer class="footer-bar no-margin text-center border-top">
+    <div class="container">
+      <p>&copy; 2020 Tarimo Research Group</p>
+    </div>
+  </footer>
+
+  <!-- start scroll to top -->
+  <a href="javascript:void(0)" class="scroll-to-top"><i class="fas fa-angle-up" aria-hidden="true"></i></a>
+  <!-- end scroll to top -->
+
+
+  <script src="{% static 'blog/js/jquery.min.js' %}"></script>
+  <script src="{% static 'blog/js/modernizr.js' %}"></script>
+  <script src="{% static 'blog/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'blog/search/search.js' %}"></script>
+  <script src="{% static 'blog/js/nav-menu.js' %}"></script>
+  <script src="{% static 'blog/js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'blog/js/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'blog/js/owl.carousel.js' %}"></script>
+  <script src="{% static 'blog/js/jquery.stellar.min.js' %}"></script>
+  <script src="{% static 'blog/js/main.js' %}"></script>
+  <script src="{% static 'blog/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'blog/js/jquery-1.11.3.min.js' %}"></script>
+  <script src="{% static 'blog/js/jquery.material-cards.js' %}"></script>
+  <script src="{% static 'blog/js/space.js' %}"></script>
+  <script src="{% static 'blog/js/images.js' %}"></script>
+  </div>
+</body>
+</html>

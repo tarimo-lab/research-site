@@ -1,0 +1,32 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+{% for project in projects %}
+<div class="row">
+
+  <div class="card margin-40px-bottom border-0 bg-light rounded-0">
+      <div class="row no-gutters list-blog">
+
+          <div class="col-md-5">
+              <div class="bg-img cover-background h-100 min-height-250" data-overlay-dark="0" data-background="{{ project.image.url }}"></div>
+          </div>
+          <div class="col-md-7">
+              <div class="card-body">
+                  <h5><a href="{% url 'blog:project-details' project.pk %}">{{ project.title }}</a></h5>
+                  <p>{{ project.abstract|truncatechars:200 }}</p>
+
+                  <div class="meta">
+                      <span class="author">Team:
+                        {% for person in project.collaborators.all %}
+                        <span>{{ person }}{% if not forloop.last %},{% endif %}</span>
+                        {% endfor %}
+                      </span>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+</div>
+  {% endfor %}
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-10 col-md-11">
+        <!-- start content  -->
+        <div class="text-center">
+          <img src="{{ post.image.url }}" class="margin-30px-bottom" style="max-width:75%;" alt="..." >
+        </div>
+        <span class="text-extra-dark-gray font-size14"><span class="font-weight-600">By:</span><span> {{ post.author }}, {{ post.creation_date.date }}</span></span>
+        <h5 class="margin-15px-top font-weight-600 font-size32 sm-font-size28 xs-font-size24 line-height-40 xs-line-height-30">{{ post.title }}</h5>
+        <div>
+          {% autoescape off %}
+            {{ post.html_content }}
+          {% endautoescape %}
+        </div>
+        <!-- end content -->
+
+        <div class="blogs margin-40px-top">
+            <!--  start comment-->
+            <div class="comments-area">
+                <div class="margin-50px-bottom sm-margin-30px-bottom">
+                    <h3 class="font-size28 sm-font-size26 xs-font-size24">Comments</h3>
+                </div>
+                {% for comment in comments %}
+                <div class="comment-box">
+                    <div class="author-thumb">
+                        <img src="img/blog/01.png" alt="" class="rounded-circle width-85 xs-width-100" />
+                    </div>
+                    <div class="comment-info">
+                        <h6><a href="javascript:void(0);">{{ comment.author }}</a></h6>
+                        <p>{{ comment.body }}</p>
+                    </div>
+                </div>
+                {% empty %}
+                  <p>No comments yet.</p>
+                {% endfor %}
+
+            </div>
+            <!-- end comment-->
+
+            <!--  start form-->
+            <div class="comment-form">
+                <div class="margin-30px-bottom">
+                    <h3 class="font-size28 xs-font-size22">Post a Comment</h3>
+                </div>
+                <form action="{% url 'blog:comment' post.pk %}" id="comment-form" method="post">
+                    {% csrf_token %}
+                    <div class="controls">
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                <input id="form_name" type="text" name="author" placeholder="Name" required="required">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                <textarea id="form_message" name="body" placeholder="Comment" rows="4" required="required"></textarea>
+                            </div>
+                            <div class="col-md-12">
+                                <button type="submit" class="butn"><span>Submit</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!--  end form-->
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

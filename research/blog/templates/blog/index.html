@@ -1,0 +1,58 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+<section class="no-padding">
+    <div class="container-fluid no-padding">
+        <div class="owl-carousel owl-theme" id="banner-carousel">
+          {% for research_area in research_areas %}
+            <div>
+                <div class="card rounded-0 bg-img box-hover2 cover-background border-0 padding-50px-lr h-100 text-center" data-background="{{ research_area.image.url }}">
+                    <div class="my-auto position-relative z-index-9">
+                        <h5 class="text-white font-size30 xs-font-size28 line-height-40">{{ research_area.title }}</h5>
+                        <div class="position-relative z-index-9"><a href="{% url 'blog:project-list' %}" class="btn-blog white">Explore</a></div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="row portfolio">
+
+                    {% for project in projects %}
+                    <div class="col-md-6">
+                        <div class="grid">
+                            <div class="grid-img text-center">
+                                <img id="project-img" src="{{ project.image.url }}">
+                            </div>
+                            <div class="grid-details">
+                                <span class="category">{{ project.researcharea_set.first }}</span>
+                                <h5><a href="{% url 'blog:project-details' project.pk %}">{{ project.title }}</a></h5>
+                                <p>{{ project.abstract|truncatechars:255 }}</p>
+                                <div class="d-flex">
+                                    <a href="standard-post.html" class="btn-blog">Read More</a>
+                                </div>
+                                <div class="meta">
+                                    <span class="date">26 Mar 2020</span>
+                                    <span class="author">Team:
+                                      {% for person in project.collaborators.all %}
+                                      <span>{{ person }}{% if not forloop.last %},{% endif %}</span>
+                                      {% endfor %}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

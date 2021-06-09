@@ -1,0 +1,86 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+
+Tarimo Research Group
+<section class="no-padding">
+          <div class="container-fluid no-padding">
+              <div class="owl-carousel owl-theme" id="portfolio-carousel">
+                {% for image in images %}
+                  <div class="insta-photo">
+                      <a href="#">
+                          <img src="{{ image.image.url }}" alt="" />
+                      </a>
+                      <div class="overlay"></div>
+                  </div>
+                    {% endfor %}
+              </div>
+          </div>
+
+</section>
+<div class="container-fluid no-padding">
+    <div class="owl-carousel owl-theme" id="portfolio-carousel">
+      {% for vedio in vedios %}
+        <div class="insta-photo">
+          <a href="#">
+          <video id="intro" width="320" height="240" controls preload autoplay>
+            <source src="{{ vedio.vediofile.url }}" type="video/mp4">
+              Your browser does not support
+          </video>
+          </a>
+            <div class="overlay"></div>
+        </div>
+          {% endfor %}
+    </div>
+</div>
+<section class="container">
+
+
+    <div class="row active-with-click">
+        {% for profile in profiles %}
+        <div class="col-md-6 col-sm-6 col-xs-12" style="display:inline-block;">
+            <article class="material-card Deep-Purple">
+                <h2 class="card2 ">
+                    <span style="font-size:30px; font-weight: 100; text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ff2d95, 0 0 20px #ff2d95, 0 0 30px #ff2d95, 0 0 40px #ff2d95, 0 0 50px #ff2d95, 0 0 75px #ff2d95; letter-spacing: 5px; opacity:1;">{{ profile.first_name }} {{profile.last_name}}</span>
+                    <p style="font-size:20px;">{{ profile.headline }}</p>
+                    <strong>
+                      <a class="btn-floating btn-lg btn-li" type="button" role="button" href="{{ profile.linkedin }}" href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                      <a class="btn-floating btn-lg btn-git" type="button" role="button" href="{{ profile.github }}" target="_blank"><i class="fab fa-github"></i></a>
+                      <a class="btn-floating btn-lg btn-fb" type="button" role="button" href="{{ profile.facebook }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                      <a class="btn-floating btn-lg btn-ins" type="button" role="button" href="{{ profile.instagram }}" target="_blank"><i class="fab fa-instagram"></i></a>
+                      <a class="btn-floating btn-lg btn-tw" type="button" role="button" href="{{ profile.twitter }}" target="_blank"><i class="fab fa-twitter"></i></a>
+                      <a href="{{ profile.resume.url }}" target="_blank"><button type="button" class="btn btn-success">Resume</button></a>
+
+                    </strong>
+                </h2>
+                <div class="mc-content">
+                    <div class="img-container">
+                        <img src="{{ profile.picture.url }}" alt="" class="mx-auto rounded-circle img-fluid">
+                    </div>
+                    <div class="mc-description">
+                      <br>
+                      <br>
+                      <br>
+                        {{ profile.info }}
+                    </div>
+                </div>
+                <a class="mc-btn-action">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <div class="mc-footer">
+                    <h4>
+                        Skills
+                    </h4>
+                    {% for skill in profile.get_skills %}
+                      <span class="badge badge-info tags">{{ skill }}</span>
+                    {% endfor %}
+                </div>
+            </article>
+        </div>
+        <br><br><br><br><br><br>
+        {% endfor %}
+
+    </div>
+</section>
+
+{% endblock %}
