@@ -1,0 +1,269 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+ <p><a href="https://tarimolab.conncoll.edu/admin/blog/publications/add/" target="blank" class="btn btn-info btn-lg">
+          <span  class="glyphicon">&#x2b;</span> Add Publication</a>
+      </p> 
+      {% for publication in publications %}
+  <div class="card margin-40px-bottom border-0 bg-light rounded-0">
+      <div class="row no-gutters list-blog">
+          <div class="col-md-12">
+              <div class="card-body">
+                  <h5><a href="{{ publication.conferenceLink }}" target="blank">{{ publication.title }}</a></h5>
+                  
+                  <div class="meta">
+                      <span class="author">Team:
+                        {% for person in publication.team.all %}
+                        <span>{{ person }}{% if not forloop.last %},{% endif %}</span>
+                        {% endfor %}
+                      </span>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+            
+    {% endfor %}
+    <section id="publications" class="padding-top-bottom light-typo color-overlay2">
+			<div class="container">
+					<h1 class="section-title text-center">Research Publications</h1>
+					<div class="row">
+						<h4 class="section-title text-center">2016</h4>
+					  <ul class="list-group scrollimation fade-right">
+
+					  	<li class="list-group-item text-center col-xs-12 col-md-6 ">
+					    	<h4 class="list-group-item-heading">Ph.D. Dissertation: COMPUTER-SUPPORTED AGILE TEACHING (CSAT)</h4>
+    						<p class="list-group-item-text">
+    							William T. Tarimo<br>
+    							Mentor: <a href="http://www.cs.brandeis.edu/~tim/" target="_blank"> Prof. Timothy J. Hickey</a><br>
+    							Published In: ProQuest and Brandeis Institutional Repository<br>
+    							<small class="text-right">
+    								<a href="papers/abstract.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i> Read The Abstract</a> | 
+    								<a href="https://drive.google.com/open?id=0BzM3jpvmytYPbFp6b09sMUREWkU" target="_blank"><i class="fa fa-file-pdf-o"></i> Read Full Dissertation</a> | 
+    								<a href="http://www.proquest.com/products-services/dissertations/" target="_blank"><i class="fa fa-globe"></i> Find In ProQuest</a>
+    							</small>
+    						</p>
+					    </li>
+
+					    <li class="list-group-item text-center col-xs-12 col-md-6 ">
+					    	<h4 class="list-group-item-heading">Ph.D. Defense Slides: Computer-Supported Agile Teaching (CSAT)</h4>
+    						<p class="list-group-item-text">
+    							By William T. Tarimo<br>
+    							Computer Science, Brandeis University - Jully 22<sup>nd</sup>, 2016<br>
+    							<small class="text-right">
+    								<a href="papers/defense.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i> PDF Slides</a> | 
+    								<a href="https://drive.google.com/open?id=131PhSTO4Ls7tG3n-LwxAehgQbyK9N-BvPu9Zhpg7qeY" target="_blank"><i class="fa fa-globe"></i> Google Slides</a>
+    							</small>
+    						</p>
+					    </li>
+
+					  	<li class="list-group-item text-center col-xs-12 col-md-6 ">
+					    	<h4 class="list-group-item-heading">Fully Integrating Remote Students into a Traditional Classroom using Live-Streaming and TeachBack</h4>
+    						<p class="list-group-item-text">
+    							William T. Tarimo, Timothy J. Hickey<br>
+    							To Appear In: <em>Frontiers in Education (FIE) 2016</em><br>
+    							October 2016, Erie, PA, USA<br>
+    							<small class="text-right">
+    								<a href="papers/FIE2016_slides.pdf" target="_blank"><i class="fa fa-desktop"></i> FIE2016 Presentation</a> | 
+    								<a href="papers/FIE2016.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i> PDF</a> | 
+    								<a href="fie2016.org" target="_blank"><i class="fa fa-newspaper-o"></i> FIE2016</a>
+    							</small>
+    						</p>
+					    </li>
+
+					  	<li class="list-group-item text-center col-xs-12 col-md-6 ">
+					    	<h4 class="list-group-item-heading">A Flipped Classroom With and Without Computers</h4>
+    						<p class="list-group-item-text">
+    							William T. Tarimo, Fatima Abu Deeb, Timothy J. Hickey<br>
+    							Book: <em>Computer Supported Education. Pg. 333-347.</em><br>
+    							Springer International Publishing Switzerland, 2016<br>
+    							<small class="text-right">
+    								<a href="papers/Springer2016.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i> PDF</a> | 
+    								<a href="http://link.springer.com/chapter/10.1007/978-3-319-29585-5_19" target="_blank"><i class="fa fa-newspaper-o"></i> Springer Link</a>
+    							</small>
+    						</p>
+					    </li>
+
+					    <li class="list-group-item text-center col-xs-12 col-md-6 ">
+					    	<h4 class="list-group-item-heading">Early Detection of At-Risk Students in CS1 Using TeachBack/Spinoza</h4>
+    						<p class="list-group-item-text">
+    							William T. Tarimo, Fatima Abu Deeb, Timothy J. Hickey<br>
+    							<em>Computer Supported Education</em><br>
+    							April 2016, Clinton, NY, USA.<br>
+    							<small class="text-right">
+    								<a href="papers/CCSCNE16.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i> PDF</a> | 
+    								<a href="http://ccscne.org/conferences/ccscne-2016/" target="_blank"><i class="fa fa-newspaper-o"></i> CCSCNE 2016</a>
+    							</small>
+    						</p>
+					    </li>
+					   </ul>
+					</div>
+
+
+					<div class="row">
+						<h4 class="section-title text-center">2015</h4>
+					  <ul class="list-group scrollimation fade-right">
+
+					    <li class="list-group-item text-center col-xs-12 col-md-6 ">
+					    	<h4 class="list-group-item-heading">Computers in the CS1 Classroom</h4>
+    						<p class="list-group-item-text">
+    							William T. Tarimo, Fatima Abu Deeb, Timothy J. Hickey<br>
+    							<em>The 7th International Conference on Computer Supported Education</em><br>
+    							May 2015, Lisbon, Portugal.<br>
+    							<small class="text-right">
+    								<a href="papers/csedu_2015.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i> PDF</a> | 
+    								<a href="http://www.csedu.org/" target="_blank"><i class="fa fa-newspaper-o"></i> CSEDU 2015</a>
+    							</small>
+    						</p>
+					    </li>
+
+					    <li class="list-group-item text-center col-xs-12 col-md-6 ">
+					    	<h4 class="list-group-item-heading">Adopting a 'Flipped' Interactive Pedagogy Using TeachBack</h4>
+    						<p class="list-group-item-text">
+    							William T. Tarimo, Timothy J. Hickey<br>
+    							<em>Consortium for Computing Sciences in Colleges — Northeastern Region</em><br>
+    							April 2015, Worcester, Massachusetts, USA.<br>
+    							<small class="text-right">
+    								<a href="papers/CCSCNE15.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i> PDF</a> | 
+    								<a href="http://ccscne.org/conferences/ccscne-2015/" target="_blank"><i class="fa fa-newspaper-o"></i> CCSCNE 2015</a>
+    							</small>
+    						</p>
+					    </li>
+					  </ul>
+					</div>
+
+					<div class="row">
+						<h4 class="section-title text-center">2014</h4>
+					  <ul class="list-group scrollimation fade-right">
+					    <li class="list-group-item text-center col-xs-12 col-md-6 ">
+					    	<h4 class="list-group-item-heading">The Affective Tutor</h4>
+    						<p class="list-group-item-text">
+    							Timothy J. Hickey, William T. Tarimo<br>
+    							<em>Journal of Computing Sciences in Colleges, 29(6), pp. 50-56, 2014.</em><br>
+    							April 2014, Providence, Rhode Island, USA.<br>
+    							<small class="text-right">
+    								<a href="papers/CCSCNE14.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i> PDF</a> | 
+    								<a href="http://ccscne.org/conferences/ccscne2014/" target="_blank"><i class="fa fa-newspaper-o"></i> CCSCNE 2014</a>
+    							</small>
+    						</p>
+					    </li>
+					  </ul>
+					</div>
+
+					<div class="row">
+						<h4 class="section-title text-center">2013</h4>
+					  <ul class="list-group scrollimation fade-right">
+					    <li class="list-group-item text-center col-xs-12 col-md-6 ">
+					    	<h4 class="list-group-item-heading">Evolving Images Using Transparent Overlapping Polygons</h4>
+    						<p class="list-group-item-text">
+    							William Tarimo, Chen Xing, Linyu Dong, Chao Li<br>
+    							<em>Introduction to Scientific Computing, Brandeis University</em><br>
+    							Spring 2013<br>
+    							<small class="text-right">
+    								<a href="papers/ImageEvolution_Paper.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i> PDF</a> | 
+    								<a href="https://github.com/wtarimo/EvolvingImages" target="_blank"><i class="fa fa-newspaper-o"></i> GitHub Repo</a>
+    							</small>
+    						</p>
+					    </li>
+
+					    <li class="list-group-item text-center col-xs-12 col-md-6 ">
+					    	<h4 class="list-group-item-heading">Classifying Yelp Data</h4>
+    						<p class="list-group-item-text">
+    							Linyu Dong, William Tarimo, Christopher Parkin, Emmanuel Awa, Dimokritos Stamatakis<br>
+    							<em>Machine Learning, Brandeis University</em><br>
+    							Spring 2013<br>
+    							<small class="text-right">
+    								<a href="papers/YelpReport.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i> PDF</a>
+    							</small>
+    						</p>
+					    </li>
+					  </ul>
+					</div>
+
+					<div class="row">
+						<h4 class="section-title text-center">2011</h4>
+					  <ul class="list-group scrollimation fade-right">
+					    <li class="list-group-item text-center col-xs-12 col-md-6 ">
+					    	<h4 class="list-group-item-heading">Using Cyclic Genetic Algorithms to Learn Gaits for an Actual Quadruped Robot</h4>
+    						<p class="list-group-item-text">
+    							Gary B. Parker and William T. Tarimo<br>
+    							<em>Proceedings of the 2011 IEEE International Conference on Systems, Man, and Cybernetics</em><br>
+    							October 2011, Anchorage, Alaska, USA.<br>
+    							<small class="text-right">
+    								<a href="papers/SMC2011_Quad.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i> PDF</a> | 
+    								<a href="http://www.ieee.org/conferences_events/conferences/conferencedetails/index.html?Conf_ID=15399" target="_blank"><i class="fa fa-newspaper-o"></i> SMC 2011</a>
+    							</small>
+    						</p>
+					    </li>
+
+					    <li class="list-group-item text-center col-xs-12 col-md-6 ">
+					    	<h4 class="list-group-item-heading">Quadruped Gait Learning Using Cyclic Genetic Algorithms</h4>
+    						<p class="list-group-item-text">
+    							Gary B. Parker, William T. Tarimo, and Michael Cantor<br>
+    							<em>Proceedings of the 2011 IEEE Congress on Evolutionary Computation</em><br>
+    							June 2011, New Orleans, Louisiana, USA.<br>
+    							<small class="text-right">
+    								<a href="papers/CEC2011_quad.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i> PDF</a> | 
+    								<a href="http://www.ieee.org/conferences_events/conferences/conferencedetails/index.html?Conf_ID=15497" target="_blank"><i class="fa fa-newspaper-o"></i> CEC 2011</a>
+    							</small>
+    						</p>
+					    </li>
+
+					    <li class="list-group-item text-center col-xs-12 col-md-6 ">
+					    	<h4 class="list-group-item-heading">The Effects of Using a Greedy Factor in Hexapod Gait Learning</h4>
+    						<p class="list-group-item-text">
+    							Gary B. Parker and William T. Tarimo<br>
+    							<em>Proceedings of the 2011 IEEE Congress on Evolutionary Computation</em><br>
+    							June 2011, New Orleans, Louisiana, USA.<br>
+    							<small class="text-right">
+    								<a href="papers/CEC2011_hex_greedy.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i> PDF</a> | 
+    								<a href="http://www.ieee.org/conferences_events/conferences/conferencedetails/index.html?Conf_ID=15497" target="_blank"><i class="fa fa-newspaper-o"></i> SMC 2011</a>
+    							</small>
+    						</p>
+					    </li>
+					  </ul>
+					</div>
+				</div>
+			</section>
+
+
+			<section id="instagram">
+				<div class="content-section-b">
+				    <div class="container">
+				        <div class="row">
+				            <h2 class="category-heading text-center">InstaFeed&nbsp<a href="https://instagram.com/naspipper"> <i class="fa fa-instagram"></i> </a> </h2>
+				        </div>
+				        <div class="row">
+			            	<div id="insta_container" style="text-align:center">
+								<div id="instafeed"> </div>
+							</div>
+				        </div>
+				    </div>
+				</div>
+			</section>
+
+
+			<section id="twitter">
+				<div class="content-section-b">
+				    <div class="container">
+				        <div class="row">
+				            <h2 class="category-heading text-center">TwitterFeed&nbsp<a href="https://twitter.com/naspipper"> <i class="fa fa-twitter"></i> </a> </h2>
+				        </div>
+				        <div class="row">
+			            	<div id="insta_container" style="text-align:center">
+			            		<div id="instafeed">
+			            			<a class="twitter-timeline" 
+			            			data-height="1000"
+			            			data-width="800"
+									data-border-color="#a80000"
+			            			href="https://twitter.com/naspipper">Tweets by naspipper</a> 
+
+									<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+			            		</div>
+							</div>
+				        </div>
+				    </div>
+				</div>
+			</section>
+
+{% endblock %}
