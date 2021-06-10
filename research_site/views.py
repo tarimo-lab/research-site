@@ -49,6 +49,7 @@ class ProjectCategoryCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
 """ Projects """
 class ProjectView(ListView):
     model = Project
@@ -58,7 +59,6 @@ class ProjectView(ListView):
 class ProjectDetailView(DetailView):
     model = Project
     template_name = "project_detail.html"
-
 
 """ Publications """
 class PublicationView(ListView):

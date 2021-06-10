@@ -1,4 +1,6 @@
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 
 from .views import (HomePage, AboutPage, ProjectCategoryView, ProjectCategoryCreateView, ProjectView, ProjectDetailView, PublicationView, PublicationDetailView, BlogView, BlogSingle)
 from . import views
@@ -16,4 +18,5 @@ urlpatterns = [
 	path('blogs/<str:slug>/', BlogSingle.as_view(), name='blog_detail'),
 	path('publications/', PublicationView.as_view(), name='publications'),
 	path('publications/<int:pk>/', PublicationDetailView.as_view(), name='publication_detail'),
-]
+
+]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -91,7 +91,7 @@ class Project(models.Model):
         null=False,
         blank=False
     )
-    project_image = models.FileField(upload_to='posts', blank = True,null = True,verbose_name="Add Photos to Article")
+    project_image = models.FileField(upload_to='projects', blank = True,null = True,verbose_name="Add Photos to Article")
     publish = models.BooleanField(
         verbose_name=_('Publish :'),
         default=True,

@@ -1,4 +1,4 @@
-# Summer 2021 Project - *Research Website*
+Summer 2021 Project - *Research Website*
 
 **Research Website** is an django app that allows a summer researchers to write about their projects, write blog posts about their summer experience, post publications and More!
 

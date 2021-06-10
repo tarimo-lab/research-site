@@ -37,10 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    #  new 
+    
     'research_site.apps.ResearchSiteConfig',
     'ckeditor',
     'users.apps.UsersConfig',
-    'crispy_forms',
 ]
 
 MIDDLEWARE = [
