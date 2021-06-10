@@ -1,12 +1,53 @@
-{% for active_project in active_projects %}
 
-<p>{{active_project.title}}</p>
 
-{% endfor %}
+{% extends "base.html" %}
 
-{% for category in latest_categories %}
+{% block content %}
+<section class="no-padding">
+    <div class="container-fluid no-padding">
+        <div class="owl-carousel owl-theme" id="banner-carousel">
+          {% for active_project in active_projects %}
+            <div>
+                <div class="card rounded-0 bg-img box-hover2 cover-background border-0 padding-50px-lr h-100 text-center" data-background="{{ active_project.project_image.url }}">
+                    <div class="my-auto position-relative z-index-9">
+                        <h5 class="text-white font-size30 xs-font-size28 line-height-40">{{ active_project.title }}</h5>
+                        <div class="position-relative z-index-9"><a href="{% url 'projects' %}" class="btn-blog white">Explore</a></div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
 
-<p>{{category.title}}</p>
-<p>{{category.summary}}</p>
+<section>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="row portfolio">
 
-{% endfor %}
+                    {% for latest_category in latest_categories %}
+                    <div class="col-md-6">
+                        <div class="grid">
+                            <div class="grid-details">
+                                <h5><a href="{% url 'project_detail' latest_category.pk %}">{{ latest_category.title }}</a></h5>
+                                <p>{{ latest_category.summary|truncatechars:255 }}</p>
+                                <div class="d-flex">
+                                    <a href="standard-post.html" class="btn-blog">Read More</a>
+                                </div>
+                                <div class="meta">
+                                    <span class="date">26 Mar 2020</span>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

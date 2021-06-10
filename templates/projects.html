@@ -1,5 +1,29 @@
+
+
+{% extends "base.html" %}
+
+
+{% block content %}
 {% for project in projects %}
+<div class="row">
 
-<p>{{ project.title }}</p>
+  <div class="card margin-40px-bottom border-0 bg-light rounded-0">
+      <div class="row no-gutters list-blog">
 
-{% endfor %}
+          <div class="col-md-5">
+              <div class="bg-img cover-background h-100 min-height-250" data-overlay-dark="0" data-background="{{ project.project_image.url }}"></div>
+          </div>
+          <div class="col-md-7">
+              <div class="card-body">
+                  <h5><a href="{% url 'project_detail' project.pk %}">{{ project.title }}</a></h5>
+                  <p>{{ project.content|truncatechars:200 }}</p>
+
+              </div>
+          </div>
+      </div>
+  </div>
+
+</div>
+  {% endfor %}
+
+{% endblock%}
