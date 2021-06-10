@@ -29,6 +29,7 @@ class AboutPage(TemplateView):
         }
         return render(request, self.template_name, context)
 
+""" Projects Category"""
 class ProjectCategoryView(ListView):
     model = ProjectCategory
     template_name = 'categories.html'
@@ -39,6 +40,15 @@ def categoryDetail(request, pk):
     projects = Project.objects.filter(category=category).all()
     return render(request, 'category_detail.html', {'category': category, 'projects': projects})
 
+class ProjectCategoryCreateView(LoginRequiredMixin, CreateView):
+    model = ProjectCategory
+    template_name = 'create/new_project_category.html'
+    fields = "__all__"
+    login_url = 'login'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 """ Projects """
 class ProjectView(ListView):
     model = Project
