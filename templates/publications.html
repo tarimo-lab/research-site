@@ -2,9 +2,12 @@
 {% extends "base.html" %}
 
 {% block content %}
- <p><a href="https://tarimolab.conncoll.edu/admin/blog/publications/add/" target="blank" class="btn btn-info btn-lg">
-          <span  class="glyphicon">&#x2b;</span> Add Publication</a>
-      </p> 
+<section>
+    <div class="md-6 float-right">
+      <a href="{% url 'publication_create' %}" class="btn btn-primary btn-lg" role="button" aria-disabled="true"><i class="fas fa-plus" title="Add Task"></i> Add New Publication</a>
+    </div>
+</section>
+<section>
       {% for publication in publications %}
   <div class="card margin-40px-bottom border-0 bg-light rounded-0">
       <div class="row no-gutters list-blog">
@@ -22,6 +25,7 @@
           </div>
       </div>
   </div>
-            
+      
     {% endfor %}
+</section>
 {% endblock %}
