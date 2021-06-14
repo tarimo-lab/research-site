@@ -15,7 +15,7 @@
           </div>
           <div class="col-md-7">
               <div class="card-body">
-                  <h5><a href="{% url 'project_detail' project.pk %}">{{ project.title }}</a></h5>
+                  <h5><a href="{% url 'project_detail' project.slug %}">{{ project.title }}</a></h5>
                   <p>{{ project.content|truncatechars:200 }}</p>
 
               </div>

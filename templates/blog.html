@@ -8,11 +8,11 @@
       <div class="row no-gutters list-blog">
 
           <div class="col-md-5">
-              <div class="bg-img cover-background h-100 min-height-250" data-overlay-dark="0" ></div>
+              <div class="bg-img cover-background h-100 min-height-250" data-overlay-dark="0" data-background="{{ blog.post_image.url }}" ></div>
           </div>
           <div class="col-md-7">
               <div class="card-body">
-                  <h5><a href="{% url 'blog_detail' blog.pk %}">{{ blog.title }}</a></h5>
+                  <h5><a href="{% url 'blog_detail' blog.slug %}">{{ blog.title }}</a></h5>
                   <p>{{ blog.content|truncatechars:200 }}</p>
                   <div class="meta">
                       <span class="date">{{ blog.creation_date }}</span>
