@@ -3,6 +3,7 @@ from django.urls import reverse
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
+from django.urls import reverse_lazy
 # Create your models here.
 
 class Profile(models.Model):
@@ -22,7 +23,9 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name
-
+        
+    def get_absolute_url(self):
+        return reverse('about')
 class Post(models.Model):
 	title = models.CharField(max_length=200)
 	author = models.CharField(max_length=200)
@@ -40,7 +43,7 @@ class Post(models.Model):
 		return self.title
 
 	def get_absolute_url(self):
-		return reverse('Post', args=[str(self.id)])
+		return reverse('blogs')
 	class Meta:
 		ordering = ['-created_date']
 
@@ -51,10 +54,11 @@ class Publication(models.Model):
 	pub_link = models.CharField(max_length=1000)
 	abstract = models.TextField()
 	created_date = models.DateTimeField(auto_now_add=True,verbose_name="Creation Date")
-	
+	success_url = reverse_lazy('publications')
 	def __str__(self):
 		return self.title
-	
+	def get_absolute_url(self):
+		return reverse('publication_detail', args=[str(self.id)])
 
 class Gallery(models.Model):
 	gallery_image = models.FileField(upload_to='gallery', blank = True,null = True,verbose_name="Add Photos to Gallery")
@@ -75,7 +79,7 @@ class ProjectCategory(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('category_detail', args=[str(self.id)])
+        return reverse('categories')
 
     class Meta:
         ordering = ('-date',)
@@ -91,7 +95,7 @@ class Project(models.Model):
         null=False,
         blank=False
     )
-    project_image = models.FileField(upload_to='projects', blank = True,null = True,verbose_name="Add Photos to Article")
+    project_image = models.FileField(upload_to='projects', blank = True,null = True,verbose_name="Add Photos to Project")
     publish = models.BooleanField(
         verbose_name=_('Publish :'),
         default=True,
@@ -99,14 +103,14 @@ class Project(models.Model):
     )
     completed = models.BooleanField(
         verbose_name=_('Completed :'),
-        default=True,
+        default=False,
         help_text=_('is this post completed?')
     )
     category = models.ForeignKey('ProjectCategory', on_delete=models.CASCADE)
     content = models.TextField()
 
     def get_absolute_url(self):
-        return reverse('project_detail', args=[str(self.id)])
+        return reverse('projects')
 
     class Meta:
         verbose_name = _('Project')

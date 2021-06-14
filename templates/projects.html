@@ -1,9 +1,15 @@
 
 
 {% extends "base.html" %}
-
+  {% load static %}
 
 {% block content %}
+<section>
+    <div class="md-6 float-right">
+      <a href="{% url 'project_create' %}" class="btn btn-primary btn-lg" role="button" aria-disabled="true"><i class="fas fa-plus" title="Add Task"></i> Add New Project</a>
+    </div>
+</section>
+
 {% for project in projects %}
 <div class="row">
 
@@ -11,7 +17,11 @@
       <div class="row no-gutters list-blog">
 
           <div class="col-md-5">
+            {% if project.project_image %}
               <div class="bg-img cover-background h-100 min-height-250" data-overlay-dark="0" data-background="{{ project.project_image.url }}"></div>
+            {% else %}
+             <div class="bg-img cover-background h-100 min-height-250" data-overlay-dark="0" data-background="{% static '../media/projects/tress.jpg' %}"></div>
+            {% endif %}
           </div>
           <div class="col-md-7">
               <div class="card-body">
