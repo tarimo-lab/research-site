@@ -3,12 +3,11 @@
 {% load static %}
 {% block content %}
  {% if user.is_authenticated %}
-<section>
-    <div class="md-6 float-right">
+    <div class="text-center">
       <a href="{% url 'blog_create' %}" class="btn btn-primary btn-lg" role="button" aria-disabled="true"><i class="fas fa-plus" title="Add Task"></i> Add New Blog</a>
     </div>
-</section>
 {% endif %}
+
 <div class="row">
   {% for blog in blogs %}
   <div class="card margin-40px-bottom border-0 bg-light rounded-0">

@@ -46,7 +46,6 @@ class Post(models.Model):
 			self.slug = slugify(self.title)
 		super(Post, self).save(*args, **kwargs)
 
-
 	def __str__(self):
 		return self.title
 
@@ -65,15 +64,20 @@ class Publication(models.Model):
 	abstract = models.TextField()
 	created_date = models.DateTimeField(auto_now_add=True,verbose_name="Creation Date")
 	success_url = reverse_lazy('publications')
+<<<<<<< HEAD
 	slug = models.SlugField(unique=True, blank=True, null=True)
 	
 	def save(self, *args, **kwargs):
         	if not self.slug:
             		self.slug = slugify(self.title)
         	super(Publication, self).save(*args, **kwargs)
+=======
+
+>>>>>>> b0c0a82782362578899dac26cc9b7a0919b321d9
 
 	def __str__(self):
 		return self.title
+
 	def get_absolute_url(self):
 		return reverse('publications')
 	class Meta:
