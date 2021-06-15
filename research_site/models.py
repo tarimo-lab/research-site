@@ -45,7 +45,6 @@ class Post(models.Model):
 			self.slug = slugify(self.title)
 		super(Post, self).save(*args, **kwargs)
 
-
 	def __str__(self):
 		return self.title
 
@@ -65,17 +64,10 @@ class Publication(models.Model):
 	created_date = models.DateTimeField(auto_now_add=True,verbose_name="Creation Date")
 	success_url = reverse_lazy('publications')
 
-    # new (Bailor)
-    # slug = models.SlugField(
-    #     max_length=256,
-    #     verbose_name=_('Slug :'),
-    #     unique=True,
-    #     null=False,
-    #     blank=False
-    # )
 
 	def __str__(self):
 		return self.title
+
 	def get_absolute_url(self):
 		return reverse('publication_detail', args=[str(self.id)])
 

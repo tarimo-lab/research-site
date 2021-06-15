@@ -3,11 +3,9 @@
 
 {% block content %}
  {% if user.is_authenticated %}
-<section>
-    <div class="md-6 float-right">
+    <div class="text-center">
       <a href="{% url 'publication_create' %}" class="btn btn-primary btn-lg" role="button" aria-disabled="true"><i class="fas fa-plus" title="Add Task"></i> Add New Publication</a>
     </div>
-</section>
 {% endif %}
 <section>
       {% for publication in publications %}
