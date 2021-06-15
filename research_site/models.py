@@ -40,11 +40,10 @@ class Post(models.Model):
 	created_date = models.DateTimeField(auto_now_add=True,verbose_name="Creation Date")
 	post_image = models.FileField(upload_to='posts', blank = True,null = True,verbose_name="Add Photos to Article")
 	slug = models.SlugField(unique=True, blank=True, null=True)
-
-	# def save(self, *args, **kwargs):
-    #     # if not self.slug:
-    #     self.slug = slugify(self.title)
-	# 	super(Post, self).save(*args, **kwargs)
+	def save(self, *args, **kwargs):
+		if not self.slug:
+			self.slug = slugify(self.title)
+		super(Post, self).save(*args, **kwargs)
 
 
 	def __str__(self):
@@ -53,8 +52,6 @@ class Post(models.Model):
 	def get_absolute_url(self):
 		return reverse('blogs')
 
-    # def save():
-    #     return 
 
 	class Meta:
 		ordering = ['-created_date']
