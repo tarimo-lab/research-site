@@ -2,11 +2,13 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
+ {% if user.is_authenticated %}
 <section>
     <div class="md-6 float-right">
       <a href="{% url 'blog_create' %}" class="btn btn-primary btn-lg" role="button" aria-disabled="true"><i class="fas fa-plus" title="Add Task"></i> Add New Blog</a>
     </div>
 </section>
+{% endif %}
 <div class="row">
   {% for blog in blogs %}
   <div class="card margin-40px-bottom border-0 bg-light rounded-0">
@@ -18,7 +20,6 @@
             {% else %}
             <div class="bg-img cover-background h-100 min-height-250" data-overlay-dark="0" data-background="{% static '../media/projects/tress.jpg' %}"></div>
             {% endif %}
-            <div class="bg-img cover-background h-100 min-height-250" data-overlay-dark="0" data-background="{{ blog.post_image.url }}" ></div>
           </div>
           <div class="col-md-7">
               <div class="card-body">

@@ -2,18 +2,20 @@
 {% extends "base.html" %}
 
 {% block content %}
+ {% if user.is_authenticated %}
 <section>
     <div class="md-6 float-right">
       <a href="{% url 'publication_create' %}" class="btn btn-primary btn-lg" role="button" aria-disabled="true"><i class="fas fa-plus" title="Add Task"></i> Add New Publication</a>
     </div>
 </section>
+{% endif %}
 <section>
       {% for publication in publications %}
   <div class="card margin-40px-bottom border-0 bg-light rounded-0">
       <div class="row no-gutters list-blog">
           <div class="col-md-12">
               <div class="card-body">
-                  <h5><a href="{{ publication.conferenceLink }}" target="blank">{{ publication.title }}</a></h5>
+                  <h5><a href="{% url 'publication_detail' publication.pk %}" target="blank">{{ publication.title }}</a></h5>
                   <div class="meta">
                       <span class="author">Team:
                         {% for person in publication.team.all %}
