@@ -40,6 +40,7 @@ class Post(models.Model):
 	created_date = models.DateTimeField(auto_now_add=True,verbose_name="Creation Date")
 	post_image = models.FileField(upload_to='posts', blank = True,null = True,verbose_name="Add Photos to Article")
 	slug = models.SlugField(unique=True, blank=True, null=True)
+
 	def save(self, *args, **kwargs):
 		if not self.slug:
 			self.slug = slugify(self.title)
@@ -64,21 +65,21 @@ class Publication(models.Model):
 	abstract = models.TextField()
 	created_date = models.DateTimeField(auto_now_add=True,verbose_name="Creation Date")
 	success_url = reverse_lazy('publications')
-
-    # new (Bailor)
-    # slug = models.SlugField(
-    #     max_length=256,
-    #     verbose_name=_('Slug :'),
-    #     unique=True,
-    #     null=False,
-    #     blank=False
-    # )
+	slug = models.SlugField(unique=True, blank=True, null=True)
+	
+	def save(self, *args, **kwargs):
+        	if not self.slug:
+            		self.slug = slugify(self.title)
+        	super(Publication, self).save(*args, **kwargs)
 
 	def __str__(self):
 		return self.title
 	def get_absolute_url(self):
-		return reverse('publication_detail', args=[str(self.id)])
+		return reverse('publications')
+	class Meta:
+		ordering = ('-created_date',)
 
+        
 class Gallery(models.Model):
 	gallery_image = models.FileField(upload_to='gallery', blank = True,null = True,verbose_name="Add Photos to Gallery")
 	
@@ -90,6 +91,7 @@ class ProjectCategory(models.Model):
     title = models.CharField(max_length=300, blank=False, null=False)
     date = models.DateTimeField(auto_now_add=True)
     summary = models.TextField()
+    proj_cat_image = models.FileField(upload_to='proj_cat_images', blank = True,null = True,verbose_name="Add Photos to Project-Category")
     class Meta:
         verbose_name = _('Project Category')
         verbose_name_plural = _('Project Categories')
@@ -107,13 +109,13 @@ class Project(models.Model):
     title = models.CharField(max_length=300, blank=False, null=False)
     collaborators = models.CharField(max_length=300, null=True)
     created_date = models.DateTimeField(auto_now_add=True,verbose_name="Creation Date")
-    slug = models.SlugField(
-        max_length=256,
-        verbose_name=_('Slug :'),
-        unique=True,
-        null=False,
-        blank=False
-    )
+    slug = models.SlugField(unique=True, blank=True, null=True)
+    
+    def save(self, *args, **kwargs):
+    	if not self.slug:
+    		self.slug = slugify(self.title)
+    	super(Project, self).save(*args, **kwargs)
+
     project_image = models.FileField(upload_to='projects', blank = True,null = True,verbose_name="Add Photos to Project")
     publish = models.BooleanField(
         verbose_name=_('Publish :'),

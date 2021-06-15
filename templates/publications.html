@@ -15,7 +15,7 @@
       <div class="row no-gutters list-blog">
           <div class="col-md-12">
               <div class="card-body">
-                  <h5><a href="{% url 'publication_detail' publication.pk %}" target="blank">{{ publication.title }}</a></h5>
+                  <h5><a href="{% url 'publication_detail' publication.slug %}" target="blank">{{ publication.title }}</a></h5>
                   <div class="meta">
                       <span class="author">Team:
                         {% for person in publication.team.all %}
@@ -28,6 +28,6 @@
       </div>
   </div>
       
-    {% endfor %}
+{% endfor %}
 </section>
 {% endblock %}

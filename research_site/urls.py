@@ -21,7 +21,7 @@ urlpatterns = [
 	path('blogs/<str:slug>/', BlogSingle.as_view(), name='blog_detail'),
 	path('create/blog/', BlogCreateView.as_view(), name='blog_create'),
 	path('publications/', PublicationView.as_view(), name='publications'),
-	path('publications/<int:pk>/', PublicationDetailView.as_view(), name='publication_detail'),
+	path('publications/<str:slug>/', PublicationDetailView.as_view(), name='publication_detail'),
 	path('create/publication/', PublicationCreateView.as_view(), name='publication_create'),
 
 ]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
