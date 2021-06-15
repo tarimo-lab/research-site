@@ -4,7 +4,12 @@ from ckeditor_uploader.fields import RichTextUploadingField
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 from django.urls import reverse_lazy
-# Create your models here.
+# Create your models here
+
+# new (Bailor)
+from django.utils.text import slugify
+
+
 
 class Profile(models.Model):
     first_name = models.CharField(max_length=32, null=True)
@@ -26,24 +31,31 @@ class Profile(models.Model):
         
     def get_absolute_url(self):
         return reverse('about')
+
+
 class Post(models.Model):
 	title = models.CharField(max_length=200)
 	author = models.CharField(max_length=200)
 	content = models.TextField()
 	created_date = models.DateTimeField(auto_now_add=True,verbose_name="Creation Date")
 	post_image = models.FileField(upload_to='posts', blank = True,null = True,verbose_name="Add Photos to Article")
-	slug = models.SlugField(
-		max_length=256,
-		verbose_name=_('Slug :'),
-		unique=True,
-		null=False,
-		blank=False
-	)
+	slug = models.SlugField(unique=True, blank=True, null=True)
+
+	# def save(self, *args, **kwargs):
+    #     # if not self.slug:
+    #     self.slug = slugify(self.title)
+	# 	super(Post, self).save(*args, **kwargs)
+
+
 	def __str__(self):
 		return self.title
 
 	def get_absolute_url(self):
 		return reverse('blogs')
+
+    # def save():
+    #     return 
+
 	class Meta:
 		ordering = ['-created_date']
 
@@ -55,6 +67,16 @@ class Publication(models.Model):
 	abstract = models.TextField()
 	created_date = models.DateTimeField(auto_now_add=True,verbose_name="Creation Date")
 	success_url = reverse_lazy('publications')
+
+    # new (Bailor)
+    # slug = models.SlugField(
+    #     max_length=256,
+    #     verbose_name=_('Slug :'),
+    #     unique=True,
+    #     null=False,
+    #     blank=False
+    # )
+
 	def __str__(self):
 		return self.title
 	def get_absolute_url(self):
