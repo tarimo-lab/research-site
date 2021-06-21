@@ -63,6 +63,7 @@ class ProjectCategoryCreateView(LoginRequiredMixin, CreateView):
 class CategoryDetailView(DetailView):
     model = Publication
     template_name = "category_detail.html"
+    
 """ Projects """
 class ProjectView(ListView):
     model = Project
