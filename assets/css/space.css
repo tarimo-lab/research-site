@@ -406,7 +406,7 @@ pre em * * {
 }
 
 .masthead div.ui.inverted.header {
-  padding-top: 20px;
+  padding-top: 10px;
   margin-top: 1.5em;
   margin-bottom: 1em;
   width: 100vw;
@@ -2642,6 +2642,7 @@ p.rating {
 @import url(https://fonts.googleapis.com/css?family=Varela+Round);
 
 .john {
+  padding-top: 70px;
   color: hsla(0, 0%, 0%, .9);
   font: normal 140px Varela Round, sans-serif;
   height: 140px;

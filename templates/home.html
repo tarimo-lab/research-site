@@ -32,7 +32,7 @@
                                 <img id="project-img" src="{{ latest_category.proj_cat_image.url }}">
                             </div>
                             <div class="grid-details">
-                                <h5><a href="{% url 'category_detail' latest_category.pk %}">{{ latest_category.title }}</a></h5>
+                                <h5><a href="{% url 'category_detail' latest_category.slug %}">{{ latest_category.title }}</a></h5>
                                 <p>{{ latest_category.summary|truncatechars:255 }}</p>
                                 <div class="d-flex">
                                     <a href="standard-post.html" class="btn-blog">Read More</a>

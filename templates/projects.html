@@ -5,9 +5,10 @@
 
 {% block content %}
  {% if user.is_authenticated %}
-    <div class="text-center">
+    <div class="container">
       <a href="{% url 'project_create' %}" class="btn btn-primary btn-lg" role="button" aria-disabled="true"><i class="fas fa-plus" title="Add Task"></i> Add New Project</a>
     </div>
+    <br>
 {% endif %}
 {% for project in projects %}
 <div class="row">
