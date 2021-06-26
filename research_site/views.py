@@ -45,8 +45,8 @@ class ProjectCategoryView(ListView):
     template_name = 'categories.html'
     context_object_name = "categories"
 
-def categoryDetail(request, pk):
-    category = get_object_or_404(ProjectCategory, pk=pk)
+def categoryDetail(request, slug):
+    category = get_object_or_404(ProjectCategory, slug=slug)
     projects = Project.objects.filter(category=category).all()
     return render(request, 'category_detail.html', {'category': category, 'projects': projects})
 

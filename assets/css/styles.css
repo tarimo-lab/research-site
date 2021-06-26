@@ -565,6 +565,11 @@ input[type=checkbox], input[type=radio] {
   font-weight: 600; }
 
 /* insta-photo */
+
+.image-height {
+     height:200px !important; 
+     width:300px !important;
+}
 .insta-photo a {
   position: relative;
   transition: all linear 300ms; }
@@ -573,12 +578,19 @@ input[type=checkbox], input[type=radio] {
   background: rgba(0, 0, 0, 0.4);
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
   opacity: 0;
   transition: all linear 300ms; }
-.insta-photo:hover .overlay {
+.insta-photo a:hover .overlay {
   opacity: 1; }
+/*.thumbnail:hover {*/
+/*    position:relative;*/
+/*    top:-25px;*/
+/*    left:-35px;*/
+/*    width:50vh;*/
+/*    height:40vh;*/
+    /*display:block;*/
+/*    z-index:999;*/
+/*}*/
 
 .blog-quot {
   margin-left: -80px;

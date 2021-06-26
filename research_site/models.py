@@ -93,7 +93,13 @@ class ProjectCategory(models.Model):
     summary = models.TextField()
     # collaborators = models.CharField(max_length=300, null=True)
     proj_cat_image = models.FileField(upload_to='proj_cat_images', blank = True,null = True,verbose_name="Add Photos to Project-Category")
-    
+    slug = models.SlugField(unique=True, blank=True, null=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super(ProjectCategory, self).save(*args, **kwargs)
+        
     class Meta:
         verbose_name = _('Project Category')
         verbose_name_plural = _('Project Categories')

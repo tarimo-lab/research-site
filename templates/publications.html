@@ -1,31 +1,26 @@
 
+
+
+
 {% extends "base.html" %}
 
 {% block content %}
  {% if user.is_authenticated %}
-    <div class="text-center">
+    <div class="container">
       <a href="{% url 'publication_create' %}" class="btn btn-primary btn-lg" role="button" aria-disabled="true"><i class="fas fa-plus" title="Add Task"></i> Add New Publication</a>
     </div>
+    <br>
 {% endif %}
-<section>
-      {% for publication in publications %}
-  <div class="card margin-40px-bottom border-0 bg-light rounded-0">
-      <div class="row no-gutters list-blog">
-          <div class="col-md-12">
-              <div class="card-body">
-                  <h5><a href="{% url 'publication_detail' publication.slug %}" target="blank">{{ publication.title }}</a></h5>
-                  <div class="meta">
-                      <span class="author">Team:
-                        {% for person in publication.team.all %}
-                        <span>{{ person }}{% if not forloop.last %},{% endif %}</span>
-                        {% endfor %}
-                      </span>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-      
-{% endfor %}
-</section>
+<div class="container">
+<div class="col-md-12">
+  {% for publication in publications %}
+    <h1><a href="{% url 'publication_detail' publication.slug %}" target="blank">{{publication.title}}</a><span class="pull-right"> <a href="{{publication.pub_link }}" target="blank" class="btn btn-primary btn-sm" role="button" aria-disabled="true">link </a></span></h1>
+    <p>{{publication.abstract|truncatechars:255 }}</p>
+    <div>
+<span class="badge">{{publication.created_date}}</span><div class="pull-right"><span class="label label-default">{{publication.author}}</span></div>         
+     </div>
+    <hr>
+    {% endfor%}
+</div>
+</div>
 {% endblock %}
