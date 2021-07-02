@@ -32,8 +32,8 @@
     <div class="row active-with-click">
         {% for profile in profiles %}
         <div class="col-md-6 col-sm-12 col-xs-12 spacing-down" style="display:inline-block;">
-            <article class="material-card bg-light">
-                <h2 class="card2 ">
+            <article class="material-card">
+                <h2 class="card2 bg-secondary ">
                     <span>{{ profile.first_name }} {{profile.last_name}}</span>
                     <p style="font-size:15px;">{{ profile.headline }}</p>
                     <strong class="john-test">
@@ -46,7 +46,7 @@
 
                     </strong>
                 </h2>
-                <div class="mc-content">
+                <div class="mc-content bg-secondary">
                     <div class="img-container">
                         <img src="{{ profile.picture.url }}" alt="" class="" style="height:100%; width:100%;">
                     </div>
@@ -57,7 +57,7 @@
                 <a class="mc-btn-action">
                     <i class="fa fa-bars"></i>
                 </a>
-                <div class="mc-footer">
+                <div class="mc-footer bg-secondary">
                     <h4>
                         Skills
                     </h4>
