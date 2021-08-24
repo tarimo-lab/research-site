@@ -26,7 +26,7 @@
     position: relative;
     height: 0;
     padding-bottom: calc(100% - 16px);
-    margin-bottom: 16.6em;
+    margin-bottom: 9.6em;
 }
 .material-card h2 {
     position: absolute;
@@ -124,7 +124,7 @@
     transition: all 0.3s;
 }
 .material-card.mc-active .mc-btn-action {
-    top: 65px;
+    /*top: 65px;*/
 }
 .material-card .mc-description {
     position: absolute;
@@ -216,7 +216,7 @@
     transition: all 0.9s;
 }
 .spacing-down{
-    padding-bottom:40px;
+    padding-bottom:10px;
 }
 .material-card .img-container {
     overflow: hidden;
@@ -1272,30 +1272,7 @@
 .subscribe {
   grid-area: subscribe;
 }
-footer{
-  display: grid;
-  grid-template-areas: 'links' 'subscribe' 'social'; 
-  margin-top: 30vh;
-  text-align: center;
-  font-family: 'Open Sans', sans-serif;
-  background-color: #673ab7;
-}
-@media (min-width: 43em) {
-  footer {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-    grid-template-areas: 'links subscribe'
-                                                                                                    'social social';
-    }
-}
-@media (min-width: 62em) {
-  footer {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    grid-template-areas: 'links social subscribe';
-    }
-}
+
 .box{
   padding: 1em;
   margin: .5em;

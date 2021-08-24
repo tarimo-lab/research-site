@@ -18,6 +18,9 @@ class Profile(models.Model):
     bio = models.TextField(max_length=350, null=True)
     linkedin = models.CharField(max_length=250, null=True)
     github = models.CharField(max_length=250, null=True)
+    facebook = models.CharField(max_length=250, null=True)
+    instagram = models.CharField(max_length=250, null=True)
+    twitter = models.CharField(max_length=250, null=True)
     picture = models.ImageField(upload_to='profile_pics', null=True)
     resume = models.FileField(upload_to ='docs', null=True)
     skills = models.CharField(max_length=300, null=True)
@@ -119,6 +122,7 @@ class Project(models.Model):
     created_date = models.DateTimeField(auto_now_add=True,verbose_name="Creation Date")
     slug = models.SlugField(unique=True, blank=True, null=True)
     project_image = models.FileField(upload_to='projects', blank = True,null = True,verbose_name="Add Photos to Project")
+    adviser = models.CharField(max_length=300, blank=True, null=True)
     publish = models.BooleanField(
         verbose_name=_('Publish :'),
         default=True,

@@ -27,6 +27,14 @@
               <div class="card-body">
                   <h5><a href="{% url 'project_detail' project.slug %}">{{ project.title }}</a></h5>
                   <p>{{ project.content|truncatechars:200 }}</p>
+                  <div class="meta">
+                    <span style="float: left;"><strong>ADVISER:</strong> {{ project.adviser }}</span>
+                      <span class="author"><strong>TEAM:</strong> 
+                        {% for team in project.get_collaborators %}
+                        <span>{{ team }}{% if not forloop.last %},{% endif %}</span>
+                        {% endfor %}
+                      </span>
+                  </div>
               </div>
           </div>
       </div>

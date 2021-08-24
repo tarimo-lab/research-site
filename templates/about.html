@@ -33,20 +33,23 @@
         {% for profile in profiles %}
         <div class="col-md-6 col-sm-12 col-xs-12 spacing-down" style="display:inline-block;">
             <article class="material-card">
-                <h2 class="card2 bg-secondary ">
-                    <span>{{ profile.first_name }} {{profile.last_name}}</span>
-                    <p style="font-size:15px;">{{ profile.headline }}</p>
+                <h2 class="card2 bg-light ">
+                    <span style="color: black;">{{ profile.first_name }} {{profile.last_name}}</span>
+                    <p style="font-size:15px; color: black;">{{ profile.headline }}</p>
                     <strong class="john-test">
-                      <a class="btn-floating btn-lg btn-li" type="button" role="button" href="{{ profile.linkedin }}" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                      <a class="btn-floating btn-lg btn-git" type="button" role="button" href="{{ profile.github }}" target="_blank"><i class="fab fa-github"></i></a>
-                      <a class="btn-floating btn-lg btn-fb" type="button" role="button" href="{{ profile.facebook }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                      <a class="btn-floating btn-lg btn-ins" type="button" role="button" href="{{ profile.instagram }}" target="_blank"><i class="fab fa-instagram"></i></a>
-                      <a class="btn-floating btn-lg btn-tw" type="button" role="button" href="{{ profile.twitter }}" target="_blank"><i class="fab fa-twitter"></i></a>
-                      <a href="{{ profile.resume.url }}" target="_blank"><button type="button" class="btn btn-success">Resume</button></a>
-
+                        {% if profile.linkedin %}
+                      <a class="btn-floating btn-lg btn-li" type="button" role="button" href="{{ profile.linkedin }}" target="_blank"><i class="fab fa-linkedin-in"></i></a> {% endif %}
+                       {% if profile.github %}
+                      <a class="btn-floating btn-lg btn-git" type="button" role="button" href="{{ profile.github }}" target="_blank"><i class="fab fa-github"></i></a> {% endif %}
+                      {% if profile.facebook %}
+                      <a class="btn-floating btn-lg btn-fb" type="button" role="button" href="{{ profile.facebook }}" target="_blank"><i class="fab fa-facebook-f"></i></a> {% endif %}
+                      {% if profile.instagram %}
+                      <a class="btn-floating btn-lg btn-ins" type="button" role="button" href="{{ profile.instagram }}" target="_blank"><i class="fab fa-instagram"></i></a> {% endif %}
+                      {% if profile.twitter %}
+                      <a class="btn-floating btn-lg btn-tw" type="button" role="button" href="{{ profile.twitter }}" target="_blank"><i class="fab fa-twitter"></i></a> {% endif %}
                     </strong>
                 </h2>
-                <div class="mc-content bg-secondary">
+                <div class="mc-content bg-light">
                     <div class="img-container">
                         <img src="{{ profile.picture.url }}" alt="" class="" style="height:100%; width:100%;">
                     </div>

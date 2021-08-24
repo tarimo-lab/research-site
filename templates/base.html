@@ -26,7 +26,7 @@
                 <nav class="navbar navbar-expand-lg navbar-light no-padding">
 
                   <div class="navbar-header navbar-header-custom">
-                    <a href="{% url 'home' %}" class="navbar-brand width-200px sm-width-180px xs-width-150px"><img id="logo" src="{% static 'img/logo.png' %}" alt="logo"></a>
+                    <a href="{% url 'home' %}" class="navbar-brand width-200px sm-width-180px xs-width-150px"><img id="logo" src="{% static 'img/logo_transparent.png' %}" alt="logo"></a>
                   </div>
 
                   <div class="navbar-toggler"></div>
@@ -71,11 +71,16 @@
     </div>
   </section>
 
-  <footer class="no-margin text-center border-top">
-    <div class="container">
-      <p>&copy; 2021 Tarimo Research Group</p>
+  <!-- Footer -->
+  <footer class="text-center" style="background-color: white; padding-bottom: 20px;">
+    <!-- Copyright -->
+    <div class="footer-copyright text-center" style="margin: 20px;">© 2021 Copyright:
+      <a href="#">Conncoll CS Research Group</a>
     </div>
+    <!-- Copyright -->
+
   </footer>
+  <!-- Footer -->
 
   <!-- start scroll to top -->
   <a href="javascript:void(0)" class="scroll-to-top"><i class="fas fa-angle-up" aria-hidden="true"></i></a>
