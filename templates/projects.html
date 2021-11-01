@@ -25,8 +25,12 @@
           </div>
           <div class="col-md-7">
               <div class="card-body">
-                  <h5><a href="{% url 'project_detail' project.slug %}">{{ project.title }}</a></h5>
-                  <p>{{ project.content|truncatechars:200 }}</p>
+                  <h5>
+                    <span><a href="{% url 'project_detail' project.slug %}" style="color: blue;">{{ project.title }}</a></span>
+                    {%if project.completed %}<span style="float: right;" class="alert alert-success" role="alert">Completed</span>
+                    {% else %}<span style="float: right;" class="alert alert-warning" role="alert">In Progress</span> {% endif%}
+                  </h5>
+                  <p>{{ project.content|truncatechars:200|safe }}</p>
                   <div class="meta">
                     <span style="float: left;"><strong>ADVISER:</strong> {{ project.adviser }}</span>
                       <span class="author"><strong>TEAM:</strong> 

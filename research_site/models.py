@@ -1,12 +1,10 @@
 from django.db import models
 from django.urls import reverse
 from ckeditor_uploader.fields import RichTextUploadingField
+from ckeditor.fields import RichTextField 
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 from django.urls import reverse_lazy
-# Create your models here
-
-# new (Bailor)
 from django.utils.text import slugify
 
 
@@ -39,10 +37,10 @@ class Profile(models.Model):
 class Post(models.Model):
 	title = models.CharField(max_length=200)
 	author = models.CharField(max_length=200)
-	content = models.TextField()
+	content = RichTextField()
 	created_date = models.DateTimeField(auto_now_add=True,verbose_name="Creation Date")
-	post_image = models.FileField(upload_to='posts', blank = True,null = True,verbose_name="Add Photos to Article")
-	slug = models.SlugField(unique=True, blank=True, null=True)
+	post_image = models.FileField(upload_to='posts', blank = False,null = True,verbose_name="Add Photos to Article")
+	slug = models.SlugField(unique=True, blank=True, null=True, verbose_name=_("Slug(0ptional): post fix url for the post - no spaces"))
 
 	def save(self, *args, **kwargs):
 		if not self.slug:
@@ -63,11 +61,11 @@ class Post(models.Model):
 class Publication(models.Model):
 	title = models.CharField(max_length=400)
 	author = models.CharField(max_length=400)
-	pub_link = models.CharField(max_length=1000)
-	abstract = models.TextField()
-	created_date = models.DateTimeField(auto_now_add=True,verbose_name="Creation Date")
+	publication_link = models.CharField(max_length=1000)
+	abstract = RichTextField()
+	created_date = models.DateTimeField(auto_now_add=False,verbose_name="Creation Date: YYYY-MM-DD")
 	success_url = reverse_lazy('publications')
-	slug = models.SlugField(unique=True, blank=True, null=True)
+	slug = models.SlugField(unique=True, blank=True, null=True, verbose_name=_("Slug(0ptional): post fix url for the publication - no spaces"))
 	
 	def save(self, *args, **kwargs):
         	if not self.slug:
@@ -84,7 +82,7 @@ class Publication(models.Model):
 
         
 class Gallery(models.Model):
-	gallery_image = models.FileField(upload_to='gallery', blank = True,null = True,verbose_name="Add Photos to Gallery")
+	gallery_image = models.FileField(upload_to='gallery', blank = False,null = True,verbose_name="Add Photos to Gallery")
 	
 	def __str__(self):
 		str_image = str(self.gallery_image)
@@ -93,10 +91,10 @@ class Gallery(models.Model):
 class ProjectCategory(models.Model):
     title = models.CharField(max_length=300, blank=False, null=False)
     date = models.DateTimeField(auto_now_add=True)
-    summary = models.TextField()
+    summary = RichTextField()
     # collaborators = models.CharField(max_length=300, null=True)
-    proj_cat_image = models.FileField(upload_to='proj_cat_images', blank = True,null = True,verbose_name="Add Photos to Project-Category")
-    slug = models.SlugField(unique=True, blank=True, null=True)
+    proj_cat_image = models.FileField(upload_to='proj_cat_imageßs', blank = False,null = True,verbose_name="Add Photos to Project-Category")
+    slug = models.SlugField(unique=True, blank=True, null=True, verbose_name=_("Slug(0ptional): post fix url for the ProjectCategory - no spaces"))
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -120,21 +118,21 @@ class Project(models.Model):
     title = models.CharField(max_length=300, blank=False, null=False)
     collaborators = models.CharField(max_length=300, null=True)
     created_date = models.DateTimeField(auto_now_add=True,verbose_name="Creation Date")
-    slug = models.SlugField(unique=True, blank=True, null=True)
-    project_image = models.FileField(upload_to='projects', blank = True,null = True,verbose_name="Add Photos to Project")
-    adviser = models.CharField(max_length=300, blank=True, null=True)
+    slug = models.SlugField(unique=True, blank=True, null=True, verbose_name=_("Slug(0ptional): post fix url for the project - no spaces"))
+    project_image = models.FileField(upload_to='projects', blank = False,null = True,verbose_name="Add Photos to Project")
+    adviser = models.CharField(max_length=300, blank=False, null=False)
     publish = models.BooleanField(
         verbose_name=_('Publish :'),
         default=True,
-        help_text=_('Will this post be published?')
+        help_text=_('Do you want to post this project?')
     )
     completed = models.BooleanField(
         verbose_name=_('Completed :'),
         default=False,
-        help_text=_('is this post completed?')
+        help_text=_('is this project completed?')
     )
-    category = models.ForeignKey('ProjectCategory', on_delete=models.CASCADE)
-    content = models.TextField()
+    category = models.ForeignKey('ProjectCategory', on_delete=models.CASCADE, verbose_name=_("Research Area"))
+    content = RichTextField()
 
 
     def save(self, *args, **kwargs):

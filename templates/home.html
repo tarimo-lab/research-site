@@ -5,6 +5,7 @@
 {% block content %}
 <section class="no-padding">
     <div class="container-fluid no-padding">
+         <div style="background-color: #d1e0e0; margin: 0px; font-style: italic;"><h1>Current Projects In Progress</h1></div>
         <div class="owl-carousel owl-theme" id="banner-carousel">
           {% for active_project in active_projects %}
             <div>
@@ -23,6 +24,13 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-10">
+                <div style="background-color: #d1e0e0; margin: 0px; font-style: italic;"><h1>Research Areas</h1></div>
+                 {% if user.is_authenticated %}
+                    <div class="container">
+                      <a href="{% url 'project_category_create' %}" class="btn btn-primary btn-lg" role="button" aria-disabled="true"><i class="fas fa-plus" title="Add Task"></i> Add New Project Category</a>
+                    </div>
+                    <br>
+                {% endif %}
                 <div class="row portfolio">
 
                     {% for latest_category in latest_categories %}
@@ -32,13 +40,13 @@
                                 <div class="bg-img cover-background h-100 min-height-250" data-overlay-dark="0" data-background="{{ latest_category.proj_cat_image.url }}"></div>
                             </div>
                             <div class="grid-details">
-                                <h5><a href="{% url 'category_detail' latest_category.slug %}">{{ latest_category.title }}</a></h5>
+                                <h5><a href="{% url 'category_detail' latest_category.slug %}" style="color: blue;">{{ latest_category.title }}</a></h5>
                                 <p>{{ latest_category.summary|truncatechars:155 }}</p>
                                 <div class="d-flex">
                                     <a href="{% url 'category_detail' latest_category.slug %}" class="btn-blog">Read More</a>
                                 </div>
                                 <div class="meta">
-                                    <span class="date">{{ latest_category.date }}</span>
+                                    <span class="date">{{ latest_category.date|date:"M d, Y" }}</span>
                                 </div>
                             </div>
                         </div>

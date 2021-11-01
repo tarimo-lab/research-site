@@ -24,9 +24,9 @@
           <div class="col-md-7">
               <div class="card-body">
                   <h5><a href="{% url 'blog_detail' blog.slug %}">{{ blog.title }}</a></h5>
-                  <p>{{ blog.content|truncatechars:200 }}</p>
+                  <p>{{ blog.content|truncatechars:200|safe }}</p>
                   <div class="meta">
-                      <span class="date">{{ blog.creation_date }}</span>
+                      <span class="date">{{ blog.creation_date.date }}</span>
                       <span class="author">By <a href="#!">{{ blog.author }}</a></span>
                   </div>
               </div>

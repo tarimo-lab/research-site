@@ -14,10 +14,10 @@
 <div class="container">
 <div class="col-md-12">
   {% for publication in publications %}
-    <h1><a href="{% url 'publication_detail' publication.slug %}" target="blank">{{publication.title}}</a><span class="pull-right"> <a href="{{publication.pub_link }}" target="blank" class="btn btn-primary btn-sm" role="button" aria-disabled="true">link </a></span></h1>
-    <p>{{publication.abstract|truncatechars:255 }}</p>
+    <h1><a href="{% url 'publication_detail' publication.slug %}">{{publication.title}}</a><span class="pull-right"> <a href="{{publication.pub_link }}" target="blank" class="btn btn-primary btn-sm" role="button" aria-disabled="true">link </a></span></h1>
+    <p>{{publication.abstract|truncatechars:255|safe }}</p>
     <div>
-<span class="badge">{{publication.created_date}}</span><div class="pull-right"><span class="label label-default">{{publication.author}}</span></div>         
+<span class="badge">{{publication.created_date|date:"M d, Y"}}</span><div class="pull-right"><span class="label label-default">{{publication.author}}</span></div>         
      </div>
     <hr>
     {% endfor%}

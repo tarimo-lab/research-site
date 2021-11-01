@@ -4,8 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Tarimo Research Group</title>
+  <title>ConnColl CS Research</title>
   {% load static %}
+   {{ form.media }}
   <link href="{% static 'css/plugins.css' %}" rel="stylesheet"/>
   <link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
   <link href="{% static 'css/custom.css' %}" rel="stylesheet"/>
@@ -38,6 +39,10 @@
                     <li><a href="{% url 'blogs' %}">Blog</a></li>
                     <li><a href="{% url 'publications' %}">Publications</a></li>
                     <li><a href="{% url 'about' %}">About Us</a></li>
+                    {% if user.is_authenticated %}
+                    {% else %}
+                    <li><a href="{% url 'login' %}">AdminLogin</a></li>
+                    {% endif %}
                   </ul>
                   <!-- end menu area -->
 
@@ -45,12 +50,15 @@
                   <div class="attr-nav sm-no-margin ml-auto sm-margin-65px-right xs-margin-55px-right">
                     <ul class="social-links no-margin text-center">
                       <li>
-                        <a href="javascript:void(0)"><i class="fab fa-twitter"></i></a>
+                        <a href="http://www.twitter.com/connCS" target="blank"><i class="fab fa-twitter"></i></a>
                       </li>
                       <li>
-                        <a href="javascript:void(0)"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.conncoll.edu/academics/majors-departments-programs/departments/computer-science/" target="blank"><i class="fa fa-globe" style="color: black;"></i></a>
                       </li>
-                      <a href="javascript:void(0)"><i class="fab fa-linkedin-in"></i></a>
+                      <li>
+                        <a href="https://www.instagram.com/conncollcs/" target="blank"><i class="fab fa-instagram"></i></a>
+                      </li>
+                      <a href="https://www.youtube.com/channel/UCrf0JUaglfkwrOsFSc1v3zQ" target="blank"><i class="fab fa-youtube"></i></a>
                     </li>
                   </ul>
                 </div>
@@ -74,8 +82,10 @@
   <!-- Footer -->
   <footer class="text-center" style="background-color: white; padding-bottom: 20px;">
     <!-- Copyright -->
-    <div class="footer-copyright text-center" style="margin: 20px;">© 2021 Copyright:
-      <a href="#">Conncoll CS Research Group</a>
+
+    <div class="footer-copyright text-center" style="margin: 20px;">
+            <a href="#" class="navbar-brand width-200px sm-width-180px xs-width-150px"><img id="logo" src="{% static 'img/logo_transparent.png' %}" alt="logo"></a>
+      <a href="#">Computer Science Research at Connecticut College  © 2021:</a>
     </div>
     <!-- Copyright -->
 

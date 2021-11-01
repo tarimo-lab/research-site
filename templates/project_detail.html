@@ -10,7 +10,7 @@
           <img src="{{ object.project_image.url }}" class="margin-30px-bottom" style="max-width:75%;" alt="..." >
         </div>
         <span class="text-extra-dark-gray font-size14"><span class="font-weight-600">Team:</span><span> {{ object.collaborators }}<span class="font-weight-600"> &nbsp; &nbsp;   Date Created: </span>{{ object.created_date.date }}</span><span style="float:right;"><strong>ADVISER: </strong>{{ object.adviser }}</span></span>
-        <h5 class="margin-15px-top font-weight-600 font-size32 sm-font-size28 xs-font-size24 line-height-40 xs-line-height-30">{{ object.title }}</h5>
+        <h5 class="margin-15px-top font-weight-600 font-size32 sm-font-size28 xs-font-size24 line-height-40 xs-line-height-30" style="color: blue; text-decoration: underline;">{{ object.title }}({%if object.completed %}Completed {% else %} In Progress {% endif%})</h5>
         <div>
           {% autoescape off %}
             {{ object.content }}

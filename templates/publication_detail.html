@@ -1,6 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content%}
-{{ object.abstract }}
-{{object.title}}
+<h1>{{object.title}}</h1>
+<strong>Author: {{object.author}}</strong>
+<br>
+
+<div>
+	<strong>Abstract:</strong><br><div>{{ object.abstract }}</div>
+</div>
+
+<div>
+	<strong>External Link: </strong><a href="{{ object.pub_link }}" target="blank">{{ object.pub_link }}</a>
+</div>
+<div>
+	<strong>Publication Date: </strong> {{object.created_date|date:"M d, Y"}}
+</div>
 {% endblock %}
